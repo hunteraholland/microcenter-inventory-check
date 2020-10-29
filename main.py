@@ -8,4 +8,9 @@ src = r.content
 
 soup = bs(src, features="html.parser")
 
-print(soup.find("span", {"class" : "inventoryCnt"}))
+inventory = soup.find("span", {"class" : "inventoryCnt"})
+
+if inventory.text == "Sold Out":
+    print("true")
+else:
+    print("false")
