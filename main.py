@@ -2,6 +2,10 @@ import requests
 import re
 from bs4 import BeautifulSoup as bs
 import smtplib, ssl
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 class CheckInventory:
 
@@ -17,7 +21,7 @@ class CheckInventory:
         smtp_server = "smtp.gmail.com"
         sender_email = "hunterhollandev@gmail.com"  # Enter your address
         receiver_email = "huntholland@gmail.com"  # Enter receiver address
-        password = input("Type your password and press enter: ")
+        password = os.getenv("GMAIL_PASSWORD")
         message = """\
         Subject: Hi there
 
