@@ -10,30 +10,21 @@ class CheckInventory:
         src = r.content
         soup = bs(src, features="html.parser")
         inventory = soup.find("span", {"class" : "inventoryCnt"})
-
-        # if inventory.text != "Sold Out":
-        #     print("true")
-        # else:
-        #     print('false')
-
         return inventory.text
 
-    def send_email(self):
-        print('an email was sent')
+    def get_connection(self):
+        port = 465  # For SSL
+        password = input("Type your password and press enter: ")
+        context = ssl.create_default_context()
+        with smtplib.SMTP_SSL("smtp.gmail.com", port, context=context) as server:
+            server.login("development@hunterholland.com", password)
 
 def main():
     test = CheckInventory()
-
-    if test.get_status() == 'Sold Out':
-        test.send_email()
+    if test.get_status() != 'Sold Out':
+        test.get_connection()
 
 if __name__ == '__main__': main()
         
-        # def send_email():
-        # # port = 465  # For SSL
-        # # password = input("Type your password and press enter: ")
-        # # context = ssl.create_default_context()
 
-        # # with smtplib.SMTP_SSL("smtp.gmail.com", port, context=context) as server:
-        # #     server.login("development@hunterholland.com", password)
-        #     print('Hey')
+        
