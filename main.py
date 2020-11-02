@@ -15,13 +15,19 @@ class CheckInventory:
     def send_email(self):
         port = 465  # For SSL
         smtp_server = "smtp.gmail.com"
-        sender_email = "my@gmail.com"  # Enter your address
-        receiver_email = "your@gmail.com"  # Enter receiver address
+        sender_email = "development@hunterholland.com"
+        receiver_email = "huntholland@gmail.com"
         password = input("Type your password and press enter: ")
         message = """\
-        Subject: Hi there
+        Subject: Get Yo Powasupply
 
-        This message is sent from Python."""
+        Greetings Hunter,
+        
+        You're a beast and your program worked. Welcome to the sff pc game.
+
+        Sincerely,
+        Hunter Holland LLC Dev Team
+        """
 
         context = ssl.create_default_context()
         with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
