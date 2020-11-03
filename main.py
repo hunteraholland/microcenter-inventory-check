@@ -66,9 +66,9 @@ class CheckInventory:
             server.sendmail(sender_email, receiver_email, message.as_string())
 
 def main():
-    test = CheckInventory()
-    # if test.get_status() == 'Sold Out':
-    test.send_email()
+    check = CheckInventory()
+    # if check.get_status() == 'Sold Out':
+    check.send_email()
 
 if __name__ == '__main__': main()
         
