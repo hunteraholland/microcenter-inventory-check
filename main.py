@@ -9,10 +9,12 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+site = "https://www.microcenter.com/product/601213/corsair-sf750-750-watt-80-plus-platinum-sfx-fully-modular-power-supply?storeid=141"
+
 class CheckInventory:
 
-    def get_status(self):
-        r = requests.get("https://www.microcenter.com/product/601213/corsair-sf750-750-watt-80-plus-platinum-sfx-fully-modular-power-supply?storeid=141")
+    def get_status(self, site):
+        r = requests.get(site)
         src = r.content
         soup = bs(src, features="html.parser")
         inventory = soup.find("span", {"class" : "inventoryCnt"})
@@ -68,7 +70,8 @@ class CheckInventory:
 def main():
     check = CheckInventory()
     # if check.get_status() == 'Sold Out':
-    check.send_email()
+    check.get_status(site)
+    #check.send_email()
 
 if __name__ == '__main__': main()
         
